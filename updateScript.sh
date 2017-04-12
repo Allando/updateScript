@@ -15,7 +15,7 @@ main()
 #tput setaf 3 = Red
 #tput setaf 6 = Cyan
 
-#tput sgr0: Reset
+#tput sgr0: Color Reset
 
 update()
 {
@@ -25,6 +25,7 @@ if [[ update ]]; then
 	echo $(tput setaf 1)'update complete'$(tput sgr0)
 else
 	echo $(tput setaf 2)'update failed'$(tput sgr0)
+	tput bel
 	echo trace_output
 fi
 }
@@ -36,12 +37,14 @@ sudo apt-get upgrade
 if [[ input == "Do you want to continue? [Y/n]" ]]; then
 	return "y"
 else
-	echo '---------------NOTHIN APPEND'
+	echo '|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|NOTHIN APPEND|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|'
+	tput bel
 fi
 if [[ upgrade ]]; then
 	echo $(tput setaf 1)'upgrade complete'$(tput sgr0)
 else
 	echo $(tput setaf 2)'upgrade failed'$(tput sgr0)
+	tput bel
 	echo trace_output
 fi
 }
@@ -54,6 +57,7 @@ if [[ dist-upgrade ]]; then
 	echo $(tput setaf 1)'dist-upgrade complete'$(tput sgr0)
 else
 	echo $(tput setaf 2)'dist-upgrade failed'$(tput sgr0)
+	tput bel
 	echo trace_output
 fi
 }
@@ -66,6 +70,7 @@ if [[ auto-remove ]]; then
 	echo $(tput setaf 1)'autoremove complete'$(tput sgr0)
 else
 	echo $(tput setaf 2)'autoremove failed'$(tput sgr0)
+	tput bel
 	echo trace_output
 fi
 }
