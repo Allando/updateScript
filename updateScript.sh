@@ -33,6 +33,11 @@ upgrade()
 {
 echo $(tput setaf 6)'Commencing upgrade...'$(tput sgr0)
 sudo apt-get upgrade
+if [[ input == "Do you want to continue? [Y/n]" ]]; then
+	return "y"
+else
+	echo '---------------NOTHIN APPEND'
+fi
 if [[ upgrade ]]; then
 	echo $(tput setaf 1)'upgrade complete'$(tput sgr0)
 else
