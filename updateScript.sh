@@ -34,7 +34,10 @@ upgrade()
 {
 echo $(tput setaf 6)'Commencing upgrade...'$(tput sgr0)
 sudo apt-get upgrade
-if [[ input == "Do you want to continue? [Y/n]" ]]; then
+if [[ stdout == "Use 'sudo apt autoremove' to remove it." ]]; then
+	autoRemove
+fi
+if [[ stdout == "Do you want to continue? [Y/n]" ]]; then
 	return "y"
 else
 	echo '|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|NOTHIN APPEND|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|'
